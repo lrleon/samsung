@@ -40,7 +40,16 @@ Where:
         - averages-of-features-related-to-mean-and-std the averaged
  	  measurements of means ans standard deviations 
 
-## Functions in the file
+## File description of this repo
+
+This repo contains the following files:
+
+* README.md: this file that you are reading
+* codeBook.md: contains description of variables and transformations
+   done by the functions of run_analysis.R
+* run_analysis.R: R script with functions for processing the samsung data
+
+## Functions in the file run_analysis.R
 
 In order to the functions in run_analysis.R work adequately is very very
 important that **your working directory be the root of your samsung
