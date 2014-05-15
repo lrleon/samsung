@@ -16,12 +16,12 @@ deviation, the median absolute deviation. Read the features_info.txt
 file in order to get additional information.
 
 There were thirty subjects and the activities monitored were:
-*1 WALKING
-*2 WALKING_UPSTAIRS
-*3 WALKING_DOWNSTAIRS
-*4 SITTING
-*5 STANDING
-*6 LAYING
+* 1 WALKING
+* 2 WALKING_UPSTAIRS
+* 3 WALKING_DOWNSTAIRS
+* 4 SITTING
+* 5 STANDING
+* 6 LAYING
 
 As scholar requirement (a course project), but also because that would
 be the basis for an initial data analysis, we only take the means of
@@ -44,23 +44,23 @@ So, by example, the variable tBodyAcc.mean.Z indicates the mean of z
 coordinate for the body measure taken by the accelerometer. 
 
 According to the file features_info.txt, the variables could be classified 
-*tBodyAcc.XYZ
-*tGravityAcc.XYZ
-*tBodyAccJerk.XYZ
-*tBodyGyro.XYZ
-*tBodyGyroJerk.XYZ
-*tBodyAccMag
-*tGravityAccMag
-*tBodyAccJerkMag
-*tBodyGyroMag
-*tBodyGyroJerkMag
-*fBodyAcc.XYZ
-*fBodyAccJerk.XYZ
-*fBodyGyro.XYZ
-*fBodyAccMag
-*fBodyAccJerkMag
-*fBodyGyroMag
-*fBodyGyroJerkMag
+* tBodyAcc.XYZ
+* tGravityAcc.XYZ
+* tBodyAccJerk.XYZ
+* tBodyGyro.XYZ
+* tBodyGyroJerk.XYZ
+* tBodyAccMag
+* tGravityAccMag
+* tBodyAccJerkMag
+* tBodyGyroMag
+* tBodyGyroJerkMag
+* fBodyAcc.XYZ
+* fBodyAccJerk.XYZ
+* fBodyGyro.XYZ
+* fBodyAccMag
+* fBodyAccJerkMag
+* fBodyGyroMag
+* fBodyGyroJerkMag
 
 Note that these variables have the word ".mean" or ".std" as part of your
 names; they are omitted for the sake of "line's economy"
