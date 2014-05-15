@@ -40,7 +40,7 @@ Where:
         - averages-of-features-related-to-mean-and-std the averaged
  	  measurements of means ans standard deviations 
 
-## File description of this repo
+## File descriptions of this repo
 
 This repo contains the following files:
 
@@ -56,12 +56,14 @@ important that **your working directory be the root of your samsung
 data**. Please be very careful with this because the scripts do not
 validate this condition.
 
-### Key in hand
+See codeBook.md file in order to precise details about the columns
+naming and the data finally extracted. 
 
-The file run_analysis contain several functions. What you probably want
-most is the routine:
+### Turnkey solution
+
+What you probably want most is the routine:
 	
-   get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt")
+   get.and.clean.samsung.data(filename = "samsung-tidy.txt")
 
 which performs all described above (merge test an train sets, extract
 means and std's and averages them) ans saves the result in filename.
