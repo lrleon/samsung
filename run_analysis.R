@@ -1,5 +1,4 @@
 
-library(RUnit)
 
 #
 # Helper function for loading the data contained in dir dirname
@@ -23,14 +22,19 @@ load.set <- function(dirname) {
 
 
 #
-# Merge a raw data frame with 
+# Merge train set with test set and then filter all the columns that
+# contain mean o std tag. The column names are cleaned of "()" and their
+# "-" are replaced by "."
+#
+# return a clean data frame only containing the means and standard
+# deviation and its column name cleaned of "()" and "-" replaced by "."
 merge.train.with.test.sets <- function() {
 
                                         # helpers functions to be used
                                         # as argument of sapply 
-  is.mean <- function(x) !is.na(grep("mean", x)[1])
-  is.std <- function(x) !is.na(grep("std", x)[1])
-  remove.pars <- function(x) gsub("\\(\\)", "", x)
+  is.mean <- function(x) !is.na(grep("mean", x)[1]) # name contain "mean"
+  is.std <- function(x) !is.na(grep("std", x)[1])   # name containg "std"
+  remove.pars <- function(x) gsub("\\(\\)", "", x)  # delete "()"
   replace.dash.by.point <- function(x) gsub("-", ".", x)
 
                                         # features names stringficated
@@ -45,13 +49,14 @@ merge.train.with.test.sets <- function() {
   feature.names <- sapply(feature.names, replace.dash.by.point, USE.NAMES=FALSE)
 
                                         # only pertinent data (subject,
-                                        # y, mean and stds
+                                        # activity, mean and stds
   data <- rbind(load.set("train"), load.set("test"))[, mean.or.std]
     
   names(data) <- c("subject", "activity", feature.names) # attach column names
 
   data
 }
+
 
 compute.avg.by.subject.and.activity <- function(data) {
 
@@ -67,36 +72,43 @@ compute.avg.by.subject.and.activity <- function(data) {
     subject <- data$subject[row]
     activity <- data$activity[row]
 
-    stopifnot(subject > 0 & subject <= 30)
-    stopifnot(activity > 0 & activity <= 6)
-    
     count[subject, activity] = count[subject, activity] + 1
 
-    avg[subject, activity, subject] <- subject
-    avg[subject, activity, activity] <- activity
-
-    for (f in 1:num.features)       
+    for (f in 1:num.features) 
       avg[subject, activity, f] = avg[subject, activity, f] + data[row, f + 2]
   }
 
+  df <- data.frame()    # data frame to contain the tidy data
   for (subject in 1:30) {
       for (activity in 1:6) {
           for (f in 1:num.features) {
               n <- count[subject, activity]
-              if (n > 0)
-                  avg[subject, activity, f] <- avg[subject, activity, f] / n
+              if (n > 0)  # for avoiding a division by zero if data is corrupted
+                  avg[subject, activity, f] <- avg[subject, activity, f]/n
           }
+          df <- rbind(df, c(subject, activity, avg[subject, activity,]))
       }
   }
-
-  avg
+  names(df) <- names(data)
+  labels <- read.table("activity_labels.txt")[,2]
+  df$activity <- ordered(df$activity, labels=labels) # convert to factor
+  df
 }
 
+get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt") {
 
-get.and.clean.samsung.data <- function() {
+    message("Getting and cleaning samsung data. Please wait\n",
+            "The duration of this process depends on your hardware\n\n",
+            "Merging test with training sets ans extracting means and std's\n")
+    data <- merge.train.with.test.sets()
 
-  print("Getting and cleaning samsung data. Please wait")
-  print("The duration of this process depends on your hardware")
-  write.table(merge.train.with.test.sets(), file="data.txt",quote=F)
-  print("Done! data was written in data.txt file.")
+    message("Done!\n\n",
+            "Creating tidy data with average of each variable and activity\n")
+    df <- compute.avg.by.subject.and.activity(data)
+
+    message("Done!\n\n",
+            "Writing tidy data to ", filename)
+    write.table(df, file=filename, quote=F)
+        
+    message("Done! data was written in ", filename)
 }
