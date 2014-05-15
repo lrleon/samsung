@@ -42,6 +42,11 @@ Where:
 
 ## Functions in the file
 
+In order to the functions in run_analysis.R work adequately is very very
+important that **your working directory be the root of your samsung
+data**. Please be very careful with this because the scripts do not
+validate this condition.
+
 ### Key in hand
 
 The file run_analysis contain several functions. What you probably want
