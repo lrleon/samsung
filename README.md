@@ -1,3 +1,5 @@
+# Script for tiding samsung data about human activity
+
 This repository contains a script for processing the "Human Activity
 Recognition database built from the recordings of 30 subjects performing
 activities of daily living (ADL) while carrying a waist-mounted
@@ -42,7 +44,7 @@ routine:
 	
    get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt")
 
-which perform all described above (merge test an train sets, extract
+which performs all described above (merge test an train sets, extract
 means and std's and averages them) ans saves the result in filename.
 
 
@@ -57,5 +59,5 @@ Eventually, you could also be interested in
 
     compute.avg.by.subject.and.activity(data)
 
-which return a data frame corresponding to the averages of data (which
-was obtained from merge.train.with.test.sets())
+which returns a data frame corresponding to the averages of data (which
+would be obtained from merge.train.with.test.sets())
