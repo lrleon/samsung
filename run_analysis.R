@@ -76,6 +76,29 @@ compute.avg.by.subject.and.activity <- function(data) {
   df <- data.frame() # data frame to contain the tidy data
   for (subject in 1:30)
       for (activity in 1:6) {
+          valid <- data$subject == subject & data$activity == activity
+          df <- rbind(df, c(subject, activity, sapply(data[valid, 3:l], mean)))
+      }
+  
+  names(df) <- names(data)
+  labels <- read.table("activity_labels.txt")[,2]
+  df$activity <- ordered(df$activity, labels=labels) # convert to factor
+  df
+}
+
+#
+# Same as above but a bit slower
+#
+compute.avg.by.subject.and.activity.1 <- function(data) {
+
+  l <- length(names(data))
+  num.features <- l -2                    # substract subject and activity
+
+  avg <- c(rep(0.0, num.features))
+
+  df <- data.frame() # data frame to contain the tidy data
+  for (subject in 1:30)
+      for (activity in 1:6) {
 
           valid <- data$subject == subject & data$activity == activity
           for (f in 1:num.features) 
@@ -91,9 +114,9 @@ compute.avg.by.subject.and.activity <- function(data) {
 }
 
 #
-# Same as above but slower. It could be used for verification
+# Same as above but more slower
 #
-compute.avg.by.subject.and.activity.alternative <- function(data) {
+compute.avg.by.subject.and.activity.2 <- function(data) {
 
   l <- length(names(data))
   num.features <- l -2                    # substract subject and activity

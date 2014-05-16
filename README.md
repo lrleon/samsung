@@ -1,4 +1,4 @@
-# Script for tiding samsung data about human activity
+# Script for tidying samsung data about human activity
 
 ## Introduction
 
@@ -30,17 +30,17 @@ subject activity averages-of-features-related-to-mean-and-std
 Where:
 	- subject is an integer between 1 and 30 corresponding to a
 	  person
-	- activity is a factor of fashion:
-	  	   1 WALKING
-		   2 WALKING_UPSTAIRS
-		   3 WALKING_DOWNSTAIRS
-		   4 SITTING
-		   5 STANDING
-		   6 LAYING
+	- activity is a factor between the following levels:
+	  	   * 1 WALKING
+		   * 2 WALKING_UPSTAIRS
+		   * 3 WALKING_DOWNSTAIRS
+		   * 4 SITTING
+		   * 5 STANDING
+		   * 6 LAYING
         - averages-of-features-related-to-mean-and-std the averaged
  	  measurements of means ans standard deviations 
 
-## File descriptions of this repo
+## Files in this repo
 
 This repo contains the following files:
 
