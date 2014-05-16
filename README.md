@@ -49,6 +49,21 @@ This repo contains the following files:
    done by the functions of run_analysis.R
 * run_analysis.R: R script with functions for processing the samsung data
 
+## Instructions for building the tidy data set
+
+* unzip the samsung data in the directory of your preference
+* cd to UCI HAR Dataset directory
+* Open a R repl in the above directory
+* On the R repl execute
+  - source("run_analysis.R")
+  - compute.avg.by.subject.and.activity()
+  After completion, the working directory will contain the file
+  "samsung-tidy.txt" 
+
+
+
+The samsung data is at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
 ## Functions in the file run_analysis.R
 
 In order to the functions in run_analysis.R work adequately is very very
