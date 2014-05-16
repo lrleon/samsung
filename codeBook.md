@@ -65,7 +65,7 @@ According to the file features_info.txt, the variables could be classified
 Note that these variables have the word ".mean" or ".std" as part of your
 names; they are omitted for the sake of "line's economy"
 
-## About the function in the script run_analysis.R
+## About the functions in the script run_analysis.R
 
 The original samsung database is divided is two sets located at the
 train and test directories respectively. The functions of this file are
@@ -90,4 +90,5 @@ The most interesting functions are:
 The final order of a row is: subject, activity and variables in the same
 order presented in the previous section. The row length is 81 in both
 data sets.
+
 
