@@ -1,4 +1,4 @@
-# CodeBook for data processed by functions in run_analysis.R
+# CodeBook for data processed by functions contained in run_analysis.R
 
 From
 
@@ -12,23 +12,21 @@ waist-mounted smartphone with embedded inertial sensors."
 
 The original samsung data containg 561 measurements, already
 pre-processed, that were obtained from two transducers: accelerometer
-and gyroscope. Both measurements were taken with time and frequency
+and gyroscope. Both measurements were recorded in time and frequency
 domain variables. The original data have different types of measures for
 those variables; by example, the mean, the standard deviation, the
-median absolute deviation. Read the features_info.txt file in order to
-get additional information.
+median absolute deviation, etc. Read the features_info.txt file in order
+to get additional information. **Our script builds a data frame
+consisting of the average of all measurements that are means or standard
+deviation**. The other measures (max, min, energy, etc) are discarded.
 
-There were thirty subjects and the activities monitored were:
+The measurement were taken for thirty subjects and the following activities:
 * 1 WALKING
 * 2 WALKING_UPSTAIRS
 * 3 WALKING_DOWNSTAIRS
 * 4 SITTING
 * 5 STANDING
 * 6 LAYING
-
-As scholar requirement (a course project), but also because that would
-be the basis for an initial data analysis, we only take the means of
-measurements. Other measures (max, min, energy, etc) are ignored.
 
 The general structure of variable naming is 
 
@@ -65,10 +63,10 @@ According to the file features_info.txt, the variables could be classified
 * fBodyGyroMag
 * fBodyGyroJerkMag
 
-Note that these variables have the word ".mean" or ".std" as part of your
-names; they are omitted for the sake of "line's economy".
-
-**Note that all above variables represent averages**.
+Note that in the resulting tidy data these variables have the word
+".mean" or ".std" as part of your names; they are omitted for the sake
+of "line's economy". **Do not forget that all above variables represent
+averages**.
 
 ## About the functions in the script run_analysis.R
 
