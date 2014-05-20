@@ -9,15 +9,15 @@
 #
 load.set <- function(dirname) {
 
-    subject.name <- paste(dirname, "/", "subject_", dirname, ".txt", sep="")
-    y.name <- paste(dirname, "/", "y_", dirname, ".txt", sep="")
-    x.name <- paste(dirname, "/", "X_", dirname, ".txt", sep="")
+  subject.name <- paste(dirname, "/", "subject_", dirname, ".txt", sep="")
+  y.name <- paste(dirname, "/", "y_", dirname, ".txt", sep="")
+  x.name <- paste(dirname, "/", "X_", dirname, ".txt", sep="")
 
-    subject.data <- read.table(subject.name)
-    y.data <- read.table(y.name)
-    x.data <- read.table(x.name)
-
-    data.frame(subject.data, y.data, x.data)
+  subject.data <- read.table(subject.name,comment.char="",colClasses="integer")
+  y.data <- read.table(y.name,comment.char="",colClasses="integer")
+  x.data <- read.table(x.name,comment.char="",colClasses="numeric")
+  
+  data.frame(subject.data, y.data, x.data)
 }
 
 
@@ -32,8 +32,6 @@ merge.train.with.test.sets <- function() {
 
                                         # helpers functions to be used
                                         # as argument of sapply 
-  is.mean <- function(x) !is.na(grep("mean", x)[1]) # name contain "mean"
-  is.std <- function(x) !is.na(grep("std", x)[1])   # name containg "std"
   remove.pars <- function(x) gsub("\\(\\)", "", x)  # delete "()"
   replace.dash.by.point <- function(x) gsub("-", ".", x)
 
@@ -41,16 +39,16 @@ merge.train.with.test.sets <- function() {
   features <- as.character(read.table("features.txt")[,2]) 
 
                                         # interesting features (mean and std)
-  mean.or.std <- sapply(features, function(x) (is.mean(x) | is.std(x)));
+  mean.or.std <- grep("(mean|std)", features)
 
                                         # features names (without "()"
                                         # and with "-" replaced by "."
-  feature.names <- sapply(features[mean.or.std], remove.pars, USE.NAMES=FALSE);
+  feature.names <- sapply(features[mean.or.std], remove.pars, USE.NAMES=FALSE)
   feature.names <- sapply(feature.names, replace.dash.by.point, USE.NAMES=FALSE)
-
-                                        # only pertinent data (subject,
-                                        # activity, mean and stds
-  data <- rbind(load.set("train"), load.set("test"))[, mean.or.std]
+  
+  cols <- c(1, 2, mean.or.std + 2) # +2 for subject and activity columns
+  
+  data <- rbind(load.set("train"), load.set("test"))[, cols]
     
   names(data) <- c("subject", "activity", feature.names) # attach column names
 
@@ -81,9 +79,32 @@ compute.avg.by.subject.and.activity <- function(data) {
       }
   
   names(df) <- names(data)
-  labels <- read.table("activity_labels.txt")[,2]
-  df$activity <- ordered(df$activity, labels=labels) # convert to factor
+  activity.labels <- read.table("activity_labels.txt")[,2]
+  df$activity <- factor(df$activity, labels=activity.labels) # convert to factor
+  df$subject <- factor(df$subject, levels=1:30)
   df
+}
+
+#
+# Merge the train and test sets, extract all variables related to means
+# and standard deviations, and save the resulting data frame in filename
+#
+get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt") {
+
+    message("Getting and cleaning samsung data. Please wait\n",
+            "The duration of this process depends on your hardware\n\n",
+            "Merging test with training sets ans extracting means and std's\n")
+    data <- merge.train.with.test.sets()
+
+    message("Done!\n\n",
+            "Creating tidy data with average of each variable and activity\n")
+    df <- compute.avg.by.subject.and.activity(data)
+
+    message("Done!\n\n",
+            "Writing tidy data to ", filename)
+    write.table(df, file=filename, quote=F)
+        
+    message("Done! data was written in ", filename)
 }
 
 #
@@ -109,7 +130,8 @@ compute.avg.by.subject.and.activity.1 <- function(data) {
 
   names(df) <- names(data)
   labels <- read.table("activity_labels.txt")[,2]
-  df$activity <- ordered(df$activity, labels=labels) # convert to factor
+  df$activity <- ordered(df$activity, labels=labels) # convert to factors
+  df$subject <- factor(df$subject, levels=1:30)
   df
 }
 
@@ -155,29 +177,8 @@ compute.avg.by.subject.and.activity.2 <- function(data) {
   names(df) <- names(data)
   labels <- read.table("activity_labels.txt")[,2]
   df$activity <- ordered(df$activity, labels=labels) # convert to factor
+  df$subject <- factor(df$subject, levels=1:30)
   df
-}
-
-#
-# Merge the train and test sets, extract all variables related to means
-# and standard deviations, and save the resulting data frame in filename
-#
-get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt") {
-
-    message("Getting and cleaning samsung data. Please wait\n",
-            "The duration of this process depends on your hardware\n\n",
-            "Merging test with training sets ans extracting means and std's\n")
-    data <- merge.train.with.test.sets()
-
-    message("Done!\n\n",
-            "Creating tidy data with average of each variable and activity\n")
-    df <- compute.avg.by.subject.and.activity(data)
-
-    message("Done!\n\n",
-            "Writing tidy data to ", filename)
-    write.table(df, file=filename, quote=F)
-        
-    message("Done! data was written in ", filename)
 }
 
 

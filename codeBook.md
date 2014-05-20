@@ -1,19 +1,22 @@
 # CodeBook for data processed by functions in run_analysis.R
 
 From
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones: "Human Activity Recognition database built from the recordings of 30
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones: 
+
+"Human Activity Recognition database built from the recordings of 30
 subjects performing activities of daily living (ADL) while carrying a
 waist-mounted smartphone with embedded inertial sensors."
 
 ## About variable names
 
 The original samsung data containg 561 measurements, already
-pre-processed, that were obtained from two principal transducer:
-accelerometer and gyroscope. Both measurements were taken with time and
-frequency domain variables. the original data have different types of
-measures for those variables; by example, the mean, the standard
-deviation, the median absolute deviation. Read the features_info.txt
-file in order to get additional information.
+pre-processed, that were obtained from two transducers: accelerometer
+and gyroscope. Both measurements were taken with time and frequency
+domain variables. The original data have different types of measures for
+those variables; by example, the mean, the standard deviation, the
+median absolute deviation. Read the features_info.txt file in order to
+get additional information.
 
 There were thirty subjects and the activities monitored were:
 * 1 WALKING
@@ -31,8 +34,8 @@ The general structure of variable naming is
 
   [t|f]Name[Acc|Gyro].[mean|std].[XYZ]
 
-* [t|f] is a prefix indicating the domain of variable; *t* for time and
-  *f* for frequency
+* [t|f] is a prefix indicating the domain of variable; **t** for time and
+  **f** for frequency
 * Name is the name of variable; it starts with upper case.
 * [Acc|Gyro] is the transducer giving the variable. Acc is for the
   accelerometer and Gyro is for the gyroscope
@@ -63,7 +66,9 @@ According to the file features_info.txt, the variables could be classified
 * fBodyGyroJerkMag
 
 Note that these variables have the word ".mean" or ".std" as part of your
-names; they are omitted for the sake of "line's economy"
+names; they are omitted for the sake of "line's economy".
+
+**Note that all above variables represent averages**.
 
 ## About the functions in the script run_analysis.R
 

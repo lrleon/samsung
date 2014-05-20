@@ -14,11 +14,9 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 The file "run_analysis.R" contains a R script that first merges the
 train and test sets, then extracts only the measurements on the mean and
 standard deviation for each measurement; the other measurements are
-discarded.
-
-The labels of data are almost the same that the original database,
+discarded. The labels of data are almost the same that the original database,
 except that the "()" are removed and the "-" are replaced by "-". In
-this way, the columns have valid names R, susceptible of being
+this way, the columns have R valid names, susceptible of being
 understood by the mechanism of the R repl autocompletion. Finally, a
 second tidy data set is built with the average of each variable for each
 subject and each activity.
