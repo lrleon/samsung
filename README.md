@@ -50,6 +50,11 @@ This repo contains the following files:
 
 * unzip the samsung data in the directory of your preference
 * cd to UCI HAR Dataset directory
+1-. Run the script from shell
+
+    Rscript run_analysis.R
+
+2-. Or 
 * Open a R repl in the above directory
 * On the R repl execute
   - source("run_analysis.R")

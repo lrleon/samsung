@@ -83,6 +83,15 @@ cd to the root data directory
 
 	cd UCI\ HAR\ Dataset
 
+### Run script in batch mode
+
+    Rscript run_analysis.R
+
+After a few seconds the tidy data set will be located at
+"samsung-tidy.txt".
+
+### Run script from R repl
+
 Open a R repl
 
        R
@@ -91,8 +100,7 @@ from the R repl execute
 
      get.and.clean.samsung.data()
 
-After a few seconds the tidy data set will be located at
-"samsung-tidy.txt". You can load the data by executing
+ You can load the data by executing
 
 		    data <- read.table("samsung-tidy.txt")
 

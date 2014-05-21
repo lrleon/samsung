@@ -218,3 +218,5 @@ compare.avg <- function(df1, df2, epsilon = 10e-6) {
         }
     TRUE
 }
+
+get.and.clean.samsung.data()
