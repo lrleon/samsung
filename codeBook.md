@@ -83,14 +83,16 @@ cd to the root data directory
 
 	cd UCI\ HAR\ Dataset
 
-### Run script in batch mode
+From this point you have two options.
+
+### Option 1: run script in batch mode
 
     Rscript run_analysis.R
 
 After a few seconds the tidy data set will be located at
 "samsung-tidy.txt".
 
-### Run script from R repl
+### Option 2: run script from the R repl
 
 Open a R repl
 
