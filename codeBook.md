@@ -87,22 +87,21 @@ The most interesting functions are:
 
     merge.train.with.test.sets() 
 
-* which returns a data frame with the two sets merged and the variables
-  extracted (the other are discarded). In this data frame the activity
-  is an integer.  
+which returns a data frame with the two sets merged and the variables
+extracted (the other are discarded). In this data frame the activity is
+an integer.   
 
-    compute.avg.by.subject.and.activity(data) 
+     compute.avg.by.subject.and.activity(data) 
 
-* Receives a data frame obtained by the above function and builds and
-  return a new data frame consisting of averages of feature variables of
-  data. This data frame has factor for the activity.  
+Receives a data frame obtained by the above function and builds and
+return a new data frame consisting of averages of feature variables of
+data. This data frame has factor for the activity. 
 
-    get.and.clean.samsung.data(filename)
+  	get.and.clean.samsung.data(filename)
 
-* Invokes the above functions (in order) and save the resulting data
-  frame in filename. If filename is not specified, then the file name
-  will be "samsung-tidy.txt". This file can be loaded as a R data frame
-  calling 
+Invokes the above functions (in order) and save the resulting data frame
+in filename. If filename is not specified, then the file name will be
+"samsung-tidy.txt". This file can be loaded as a R data frame calling  
 
   	  read.table("samsung-tidy.txt") 
 
