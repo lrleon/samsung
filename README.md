@@ -23,7 +23,7 @@ subject and each activity.
 
 The order of columns of final data is
 
-subject activity averages-of-features-related-to-mean-and-std
+    subject activity averages-of-features-related-to-mean-and-std
 
 Where:
 
@@ -57,7 +57,6 @@ This repo contains the following files:
   After completion, the working directory will contain the file
   "samsung-tidy.txt", This file can be loaded as a R data frame with
    read.table("samsung-tidy.txt")
-
 
 
 The samsung data is at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
