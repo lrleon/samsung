@@ -98,9 +98,11 @@ Open a R repl
 
 from the R repl execute
 
-     get.and.clean.samsung.data()
+     get.and.clean.samsung.data("samsung-tidy.txt")
 
- You can load the data by executing
+You could specify another file name
+
+You can load the data by executing
 
 		    data <- read.table("samsung-tidy.txt")
 
