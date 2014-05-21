@@ -30,15 +30,15 @@ The measurement were taken for thirty subjects and the following activities:
 
 The general structure of variable naming is 
 
-  [t|f]Name[Acc|Gyro].[mean|std].[XYZ]
+    [t|f]Name[Acc|Gyro].[mean|std].[XYZ]
 
 * [t|f] is a prefix indicating the domain of variable; **t** for time and
   **f** for frequency
-* Name is the name of variable; it starts with upper case.
+* Name is the name of variable; it always starts with upper case.
 * [Acc|Gyro] is the transducer giving the variable. Acc is for the
   accelerometer and Gyro is for the gyroscope
 * [mean|std] is the measurement type: mean and std for standard deviation
-* In those case where apply the dimensions the suffix .X, .Y or .Z is
+* In those cases where apply the dimensions, the suffix .X, .Y or .Z is
   added.
 
 So, by example, the variable tBodyAcc.mean.Z indicates the mean of z
@@ -73,6 +73,30 @@ The column order in the final tidy data is:
     subject activity averages-of-features-related-to-mean-and-std
 
 
+## Basic instructions for building a initial tidy data set
+
+From the directory where you wish work execute
+
+     unzip UCI\ HAR\ Dataset.zip
+
+cd to the root data directory
+
+	cd UCI\ HAR\ Dataset
+
+Open a R repl
+
+       R
+
+from the R repl execute
+
+     get.and.clean.samsung.data()
+
+After a few seconds the tidy data set will be located at
+"samsung-tidy.txt". You can load the data by executing
+
+		    data <- read.table("samsung-tidy.txt")
+
+
 ## About the functions in the script run_analysis.R
 
 The original samsung database is divided is two sets located at the
@@ -81,7 +105,7 @@ intended to process all this data and to extract the mean and standard
 deviations of variables already described.
 
 The functions should be executed from a R repl and they assume that the
-working directory is the root of samsung database. 
+working directory is the root of samsung database (named "UCI HAR Dataset")
 
 The most interesting functions are:
 
@@ -93,13 +117,13 @@ an integer.
 
      compute.avg.by.subject.and.activity(data) 
 
-Receives a data frame obtained by the above function and builds and
+which receives a data frame obtained by the above function and builds and
 return a new data frame consisting of averages of feature variables of
 data. This data frame has factor for the activity. 
 
   	get.and.clean.samsung.data(filename)
 
-Invokes the above functions (in order) and save the resulting data frame
+which invokes the above functions (in order) and save the resulting data frame
 in filename. If filename is not specified, then the file name will be
 "samsung-tidy.txt". This file can be loaded as a R data frame calling  
 

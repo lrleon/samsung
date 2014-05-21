@@ -35,7 +35,7 @@ Where:
   - 4 SITTING
   - 5 STANDING
   - 6 LAYING
-* averages-of-features-related-to-mean-and-std the averaged measurements of means ans standard deviations 
+* averages-of-features-related-to-mean-and-std the averaged measurements of means and standard deviations 
 
 ## Files in this repo
 
