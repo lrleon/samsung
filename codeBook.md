@@ -68,6 +68,11 @@ Note that in the resulting tidy data these variables have the word
 of "line's economy". **Do not forget that all above variables represent
 averages**.
 
+The column order in the final tidy data is:
+
+**subject activity averages-of-features-related-to-mean-and-std**
+
+
 ## About the functions in the script run_analysis.R
 
 The original samsung database is divided is two sets located at the
@@ -75,8 +80,8 @@ train and test directories respectively. The functions of this file are
 intended to process all this data and to extract the mean and standard
 deviations of variables already described.
 
-The functions should be executed in R taking as working directory the
-root of samsung database.
+The functions should be executed from a R repl and they assume that the
+working directory is the root of samsung database. 
 
 The most interesting functions are:
 * merge.train.with.test.sets() which returns a data frame with the two
@@ -88,7 +93,9 @@ The most interesting functions are:
   has factor for the activity.
 * get.and.clean.samsung.data(filename): invokes the above functions (in
   order) and save the resulting data frame in filename. If filename is
-  not specified, then the file name will be "samsung-tidy.txt"
+  not specified, then the file name will be "samsung-tidy.txt". This
+  file can be loaded as a R data frame calling
+  read.table("samsung-tidy.txt") 
 
 The final order of a row is: subject, activity and variables in the same
 order presented in the previous section. The row length is 81 in both

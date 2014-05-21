@@ -1,6 +1,14 @@
-
-
+# This file contains several scripts for processing data on human activity.
 #
+# Possibly the function most interesting for you is
+#
+#    get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt")
+#
+# but you could ve injterested in other files. See condeBook.md annd
+# Readme.md for more comments
+#
+
+
 # Helper function for loading the data contained in dir dirname
 # expressed by the files subject_dirname.txt, X_dirname.txt and y_dirname.txt.
 #
@@ -21,7 +29,7 @@ load.set <- function(dirname) {
 }
 
 
-#
+
 # Merge train set with test set and then filter all the columns that
 # contain mean o std tag. The column names are cleaned of "()" and their
 # "-" are replaced by "."
@@ -55,7 +63,8 @@ merge.train.with.test.sets <- function() {
   data
 }
 
-#
+
+
 # Compute and returns a data frame with the average values of data (that
 # must be obtained by merge.train.with.test.sets()) for each subject and
 # each activity
@@ -85,7 +94,8 @@ compute.avg.by.subject.and.activity <- function(data) {
   df
 }
 
-#
+
+
 # Merge the train and test sets, extract all variables related to means
 # and standard deviations, and save the resulting data frame in filename
 #
@@ -107,7 +117,8 @@ get.and.clean.samsung.data <- function(filename = "samsung-tidy.txt") {
     message("Done! data was written in ", filename)
 }
 
-#
+
+
 # Same as above but a bit slower
 #
 compute.avg.by.subject.and.activity.1 <- function(data) {
@@ -135,7 +146,7 @@ compute.avg.by.subject.and.activity.1 <- function(data) {
   df
 }
 
-#
+
 # Same as above but more slower
 #
 compute.avg.by.subject.and.activity.2 <- function(data) {
@@ -182,7 +193,7 @@ compute.avg.by.subject.and.activity.2 <- function(data) {
 }
 
 
-#
+
 # Compare two data frames obtained from compute.avg.by.subject.and.activity
 #
 # used for verification purposes

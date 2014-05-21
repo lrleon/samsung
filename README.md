@@ -15,9 +15,9 @@ The file "run_analysis.R" contains a R script that first merges the
 train and test sets, then extracts only the measurements on the mean and
 standard deviation for each measurement; the other measurements are
 discarded. The labels of data are almost the same that the original database,
-except that the "()" are removed and the "-" are replaced by "-". In
-this way, the columns have R valid names, susceptible of being
-understood by the mechanism of the R repl autocompletion. Finally, a
+except that the "()" are removed and the "-" are replaced by ".". In
+this way, the columns conform R valid names, susceptible of being
+understood by the autocompletion mechanism of the R repl. Finally, a
 second tidy data set is built with the average of each variable for each
 subject and each activity.
 
@@ -55,7 +55,8 @@ This repo contains the following files:
   - source("run_analysis.R")
   - compute.avg.by.subject.and.activity()
   After completion, the working directory will contain the file
-  "samsung-tidy.txt" 
+  "samsung-tidy.txt", This file can be loaded as a R data frame with
+   read.table("samsung-tidy.txt")
 
 
 
