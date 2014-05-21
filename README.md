@@ -49,7 +49,9 @@ This repo contains the following files:
 ## Instructions for building the tidy data set
 
 * unzip the samsung data in the directory of your preference
-* cd to UCI HAR Dataset directory
+* cd to UCI HAR Dataset directory.
+
+From this point there are two possible paths
 
 1-. Run the script from shell
 
@@ -63,6 +65,15 @@ This repo contains the following files:
   After completion, the working directory will contain the file
   "samsung-tidy.txt", This file can be loaded as a R data frame with
    read.table("samsung-tidy.txt")
+
+The advantage of this option is that you could execute other
+functions. By example, you could be interested in getting the data
+without averaging. In this case, execute:
+
+	df <- merge.train.with.test.sets()
+
+in order to get in df variable a data frame of the variables without
+averaging. 
 
 
 The samsung data is at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 

@@ -106,6 +106,14 @@ You can load the data by executing
 
 		    data <- read.table("samsung-tidy.txt")
 
+An advantage of this option is that you could execute other
+functions. By example, you could be interested in getting the data
+without averaging. In this case, execute:
+
+	df <- merge.train.with.test.sets()
+
+in order to get in df variable a data frame of the variables without
+averaging. 
 
 ## About the functions in the script run_analysis.R
 
