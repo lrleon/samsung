@@ -75,7 +75,7 @@ naming and the data finally extracted.
 
 What you probably want most is the routine:
 	
-   get.and.clean.samsung.data(filename = "samsung-tidy.txt")
+	get.and.clean.samsung.data(filename = "samsung-tidy.txt")
 
 which performs all described above (merge test an train sets, extract
 means and std's and averages them) ans saves the result in filename.
