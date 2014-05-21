@@ -70,7 +70,7 @@ averages**.
 
 The column order in the final tidy data is:
 
-    **subject activity averages-of-features-related-to-mean-and-std**
+    subject activity averages-of-features-related-to-mean-and-std
 
 
 ## About the functions in the script run_analysis.R
@@ -84,24 +84,28 @@ The functions should be executed from a R repl and they assume that the
 working directory is the root of samsung database. 
 
 The most interesting functions are:
+
     merge.train.with.test.sets() 
 
-    * which returns a data frame with the two sets merged and the variables
-      extracted (the other are discarded). In this data frame the activity
-      is an integer. 
+* which returns a data frame with the two sets merged and the variables
+  extracted (the other are discarded). In this data frame the activity
+  is an integer.  
 
     compute.avg.by.subject.and.activity(data) 
 
-    * Receives a data frame obtained by the above function and builds
-    * and return a new data frame consisting of averages of feature
-    * variables of data. This data frame has factor for the activity. 
+* Receives a data frame obtained by the above function and builds and
+  return a new data frame consisting of averages of feature variables of
+  data. This data frame has factor for the activity.  
 
     get.and.clean.samsung.data(filename)
 
-    * Invokes the above functions (in order) and save the resulting data
+* Invokes the above functions (in order) and save the resulting data
   frame in filename. If filename is not specified, then the file name
   will be "samsung-tidy.txt". This file can be loaded as a R data frame
-  calling read.table("samsung-tidy.txt")
+  calling 
+
+  	  read.table("samsung-tidy.txt") 
+
 
 The final order of a row is: subject, activity and variables in the same
 order presented in the previous section. The row length in columns is 81
