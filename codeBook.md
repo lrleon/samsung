@@ -64,9 +64,13 @@ According to the file features_info.txt, the variables could be classified
 * fBodyGyroJerkMag
 
 Note that in the resulting tidy data these variables have the word
-".mean" or ".std" as part of your names; they are omitted for the sake
-of "line's economy". **Do not forget that all above variables represent
-averages**.
+".mean" or ".std", which are part of your original names, As regards the
+original names, they had "()" and "-" symbols. The "()" were removed and
+the "-" was replaced by ".". In this way, the name conform an valid and
+understandable R column name, susceptible of being recognized by the R
+auto-completion repl. The rest of names was not modified for the sake of
+"line's economy". But **do not forget that all above variables represent
+averages** of means or standard deviations.
 
 The column order in the final tidy data is:
 
