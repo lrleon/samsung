@@ -25,7 +25,7 @@ The order of columns of final data is
 
     subject activity averages-of-features-related-to-mean-and-std
 
-Where:
+Where: 
 
 * subject is an integer between 1 and 30 corresponding to a person
 * activity is a factor between the following levels:

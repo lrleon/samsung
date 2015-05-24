@@ -1,4 +1,4 @@
-# This file contains several scripts for processing data on human activity.
+# This file contains several scripts for processing data on human activity. 
 #
 # Possibly the function most interesting for you is
 #
@@ -6,7 +6,7 @@
 #
 # but you could ve injterested in other files. See condeBook.md annd
 # Readme.md for more comments
-#
+# 
 
 
 # Helper function for loading the data contained in dir dirname
@@ -147,7 +147,7 @@ compute.avg.by.subject.and.activity.1 <- function(data) {
 }
 
 
-# Same as above but more slower
+# Same as above but still more slower
 #
 compute.avg.by.subject.and.activity.2 <- function(data) {
 
